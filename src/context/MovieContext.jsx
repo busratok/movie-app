@@ -27,7 +27,7 @@ const MovieContextProvider = ({ children }) => {
     getMovies(FEATURED_API);
   }, []);
 
-  const values = { movies, getMovies, loading };
+  const values = { movies, getMovies, loading, API_KEY };
   return (
     <MovieContext.Provider value={values}>{children}</MovieContext.Provider>
   );

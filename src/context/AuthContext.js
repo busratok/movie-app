@@ -34,7 +34,7 @@ const AuthContextProvider = ({ children }) => {
         displayName: displayName,
       });
       console.log(userCredential);
-      navigate("/");
+      navigate(-1);
     } catch (error) {
       toastErrorNotify(error.message);
     }
@@ -46,7 +46,7 @@ const AuthContextProvider = ({ children }) => {
       .then((result) => {
         console.log(result);
         toastSuccessNotify("Registered succesfully!");
-        navigate("/");
+        navigate(-1);
       })
       .catch((error) => toastErrorNotify(error.message));
   };
@@ -55,7 +55,7 @@ const AuthContextProvider = ({ children }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toastSuccessNotify("Logged in succesfully!");
-      navigate("/");
+      navigate(-1);
     } catch (error) {
       toastErrorNotify(error.message);
     }
