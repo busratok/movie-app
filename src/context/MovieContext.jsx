@@ -1,8 +1,8 @@
 import { async } from "@firebase/util";
 import axios from "axios";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
-const MovieContext = createContext();
+export const MovieContext = createContext();
 
 const API_KEY = process.env.REACT_APP_TMDB_KEY;
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
@@ -13,7 +13,8 @@ const MovieContextProvider = ({ children }) => {
   const getMovies = async (API) => {
     try {
       let { data } = await axios(API);
-      let { results } = data;
+      let { results } = await data;
+      setMovies(results);
       setLoading(false);
       console.log(results);
     } catch (error) {
