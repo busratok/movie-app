@@ -21,7 +21,7 @@ const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     userObserver();
-  }, [currentUser]);
+  }, []);
 
   const createUser = async (email, password, displayName) => {
     try {
@@ -70,7 +70,6 @@ const AuthContextProvider = ({ children }) => {
           "user",
           JSON.stringify({ displayName, photoURL })
         );
-        console.log(currentUser);
       } else {
         setCurrentUser(false);
         sessionStorage.clear();
