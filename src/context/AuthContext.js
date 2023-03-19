@@ -33,8 +33,9 @@ const AuthContextProvider = ({ children }) => {
       await updateProfile(auth.currentUser, {
         displayName: displayName,
       });
+      setCurrentUser({ ...currentUser, displayName: displayName });
       console.log(userCredential);
-      navigate(-1);
+      navigate("/");
     } catch (error) {
       toastErrorNotify(error.message);
     }
@@ -46,7 +47,7 @@ const AuthContextProvider = ({ children }) => {
       .then((result) => {
         console.log(result);
         toastSuccessNotify("Registered succesfully!");
-        navigate(-1);
+        navigate("/");
       })
       .catch((error) => toastErrorNotify(error.message));
   };
@@ -55,7 +56,7 @@ const AuthContextProvider = ({ children }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toastSuccessNotify("Logged in succesfully!");
-      navigate(-1);
+      navigate("/");
     } catch (error) {
       toastErrorNotify(error.message);
     }
