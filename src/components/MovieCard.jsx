@@ -13,7 +13,7 @@ const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
       return "green";
     } else if (vote >= 6) {
       return "orange";
-    } else {
+    } else if (vote > 0) {
       return "red";
     }
   };
@@ -33,7 +33,7 @@ const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
         <h5>{title}</h5>
         {currentUser && (
           <span className={`tag ${getVoteClass(vote_average)}`}>
-            {vote_average}
+            {vote_average ? vote_average.toFixed(1) : "N/A"}
           </span>
         )}
       </div>

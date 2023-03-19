@@ -56,6 +56,7 @@ const Main = () => {
         ) : (
           movies.map((movie) => <MovieCard key={movie.id} {...movie} />)
         )}
+        {movies.length === 0 && <h2>The movie can not be found</h2>}
       </div>
     </>
   );

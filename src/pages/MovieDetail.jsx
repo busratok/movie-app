@@ -3,13 +3,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MovieContext } from "../context/MovieContext";
 
+const defaultImg =
+  "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2056&q=80";
+
 const MovieDetail = () => {
   const [moviedetails, setMoviedetails] = useState("");
   const { id } = useParams();
   const {
     title,
     poster_path,
-    defaultImage,
     overview,
     release_date,
     vote_average,
@@ -40,7 +42,7 @@ const MovieDetail = () => {
         <div className="flex flex-col lg:flex-row max-w-6xl rounded-lg bg-gray-100 shadow-lg">
           <img
             className=" lg:w-1/3 h-96 lg:h-[600px] object-cover rounded-t-lg md:rounded-none md:rounded-l-lg"
-            src={poster_path ? baseImageUrl + poster_path : defaultImage}
+            src={poster_path ? baseImageUrl + poster_path : defaultImg}
             alt="poster"
           />
           <div className="p-6 flex flex-col justify-between">
@@ -55,7 +57,7 @@ const MovieDetail = () => {
                 {"Release Date : " + release_date}
               </li>
               <li className="px-6 py-2 border-b border-gray-400 w-full">
-                {"Rate : " + vote_average}
+                {`Rate: ${vote_average ? vote_average.toFixed(1) : "N/A"}`}
               </li>
               <li className="px-6 py-2 border-b border-gray-400 w-full">
                 {"Total Vote : " + vote_count}
