@@ -29,7 +29,7 @@ const Main = () => {
     }
   };
   return (
-    <>
+    <div className="dark:bg-gray-dark-main">
       <form className="flex justify-center p-2" onSubmit={handleSubmit}>
         <input
           type="search"
@@ -58,7 +58,7 @@ const Main = () => {
         )}
         {movies.length === 0 && <h2>The movie can not be found</h2>}
       </div>
-    </>
+    </div>
   );
 };
 

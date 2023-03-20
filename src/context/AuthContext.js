@@ -3,12 +3,17 @@ import { auth } from "../auth/firebase";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
 } from "firebase/auth";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
+import {
+  toastErrorNotify,
+  toastSuccessNotify,
+  toastWarnNotify,
+} from "../helpers/ToastNotify";
 import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
@@ -81,8 +86,13 @@ const AuthContextProvider = ({ children }) => {
   const logOut = () => {
     signOut(auth);
   };
-
-  const values = { createUser, signUpProvider, signIn, logOut, currentUser };
+  const values = {
+    createUser,
+    signUpProvider,
+    signIn,
+    logOut,
+    currentUser,
+  };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 
