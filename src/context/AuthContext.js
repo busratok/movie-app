@@ -9,11 +9,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import {
-  toastErrorNotify,
-  toastSuccessNotify,
-  toastWarnNotify,
-} from "../helpers/ToastNotify";
+import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();

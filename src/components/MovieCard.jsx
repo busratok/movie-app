@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import FavIcon from "../assets/icons/FavIcon";
 import { AuthContext } from "../context/AuthContext";
+import { MovieContext } from "../context/MovieContext";
 
 const baseImageUrl = "https://image.tmdb.org/t/p/w1280";
 const defaultImg =
@@ -8,6 +10,8 @@ const defaultImg =
 
 const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
   const { currentUser } = useContext(AuthContext);
+  const { addToFavorites, favorites } = useContext(MovieContext);
+  const favorite = favorites.some((item) => item.id === id);
   const getVoteClass = (vote) => {
     if (vote >= 8) {
       return "green";
@@ -24,6 +28,16 @@ const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
       id="container"
       onClick={() => navigate(`/detail/${id}`)}
     >
+      {currentUser && (
+        <FavIcon
+          className="absolute mt-3 ml-3"
+          onClick={(e) => {
+            e.stopPropagation();
+            addToFavorites({ title, poster_path, overview, vote_average, id });
+          }}
+          isFavorite={favorite}
+        />
+      )}
       <img
         loading="lazy"
         src={poster_path ? baseImageUrl + poster_path : defaultImg}
