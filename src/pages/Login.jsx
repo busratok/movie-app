@@ -18,7 +18,7 @@ const Login = () => {
   };
   console.log(info);
   return (
-    <div className="overflow-hidden flex-1 h-screen justify-center items-center  dark:bg-gray-dark-main">
+    <div className="overflow-hidden flex-grow justify-center items-center  dark:bg-gray-dark-main">
       <div className={`form-container mt-[5vh] w-[380px] h-[430px]`}>
         <form onSubmit={handleSubmit}>
           <h2 className="text-red-main text-2xl font-[500] text-center tracking-[0.1em] mb-3">

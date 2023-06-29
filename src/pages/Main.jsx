@@ -33,7 +33,7 @@ const Main = () => {
       <form className="flex justify-center p-2" onSubmit={handleSubmit}>
         <input
           type="search"
-          className="w-80 h-8 rounded-md p-1 m-2"
+          className="w-80 h-8  p-1 m-2"
           placeholder="Search a movie"
           onChange={(e) => handleChange(e)}
         />
